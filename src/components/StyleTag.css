@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --bg:#0b0e13;
+  --card:#11151c;
+  --muted:#9aa4b2;
+  --text:#e6edf3;
+  --brand:#ff5c1a;
+  --brand-2:#ffd14a;
+  --ring: rgba(255,92,26,0.35);
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius: 18px;
+}
+
+*{box-sizing:border-box}
+html,body,#root,.app{height:100%}
+body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial; background:var(--bg); color:var(--text)}
+a{color:inherit; text-decoration:none}
+img{max-width:100%; display:block}
+
+/* ---------------- Layout ---------------- */
+.container{width:min(1120px, 92%); margin-inline:auto}
+.grid{display:grid; gap:28px}
+.two-col{grid-template-columns: 1.1fr .9fr}
+@media (max-width: 900px){ .two-col{grid-template-columns:1fr} }
+
+/* ---------------- Buttons ---------------- */
+.btn{border-radius:14px; padding:12px 18px; font-weight:600; display:inline-block; border:1px solid transparent; transition:.2s}
+.btn--primary{background:var(--brand); color:#111; border-color:var(--brand)}
+.btn--primary:hover{filter:brightness(1.07)}
+.btn--ghost{border-color:#2a3039}
+.btn--ghost:hover{background:#151a22}
+.btn--inverted{background:#fff; color:#111}
+.btn--small{padding:10px 14px; border-radius:12px}
+
+.link{color:var(--brand); font-weight:600}
+
+/* ---------------- Header ---------------- */
+.site-header{position:sticky; top:0; z-index:20; backdrop-filter:saturate(140%) blur(6px); background:rgba(11,14,19,.7); border-bottom:1px solid #171c23}
+.header-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+.brand{display:flex; align-items:center; gap:12px}
+.logo{width:44px; height:44px; object-fit:contain}
+.logo.small{width:36px; height:36px}
+.brand-text{font-weight:800; letter-spacing:.2px}
+
+.nav{display:flex; align-items:center; gap:20px}
+.nav a{opacity:.95}
+@media (max-width: 900px){
+  .nav{position:fixed; inset:64px 0 auto; background:rgba(11,14,19,.98); border-bottom:1px solid #171c23; padding:18px 24px; display:none}
+  .nav.open{display:flex; flex-direction:column; align-items:flex-start; gap:16px}
+}
+
+.hamburger{display:none; position:relative; width:42px; height:42px; border-radius:12px; border:1px solid #232a33; background:#141922}
+.hamburger span{position:absolute; left:10px; right:10px; height:2px; background:#e6edf3; transition:.2s}
+.hamburger span:nth-child(1){top:12px}
+.hamburger span:nth-child(2){top:20px}
+.hamburger span:nth-child(3){bottom:12px}
+.hamburger.is-active span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.hamburger.is-active span:nth-child(2){opacity:0}
+.hamburger.is-active span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+@media (max-width: 900px){ .hamburger{display:inline-block} }
+
+/* ---------------- Hero ---------------- */
+.hero{padding:64px 0 24px; position:relative; overflow:hidden}
+.hero-wave{
+  height:60px;
+  background:radial-gradient(100% 120% at 50% 0%, rgba(255,92,26,.08), transparent 60%);
+}
+.hero-copy h1{font-size: clamp(28px, 4.6vw, 50px); line-height:1.05; margin:0 0 10px}
+.accent{color:var(--brand)}
+.hero-copy p{color:var(--muted); font-size:17px}
+.cta-row{display:flex; gap:12px; margin:16px 0 6px}
+.hero-points{display:flex; flex-wrap:wrap; gap:10px 18px; padding-left:18px; color:#b7c0cb}
+.hero-points li{list-style:disc}
+.hero-media img{border-radius:var(--radius); box-shadow:var(--shadow)}
+
+/* ---------------- Badges ---------------- */
+.badges{padding:18px 0 0}
+.badges-inner{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+.badge{background:#0f141c; border:1px solid #1b222c; border-radius:16px; padding:12px 14px; display:flex; gap:10px; align-items:center}
+.badge-emoji{font-size:18px}
+@media (max-width: 800px){ .badges-inner{grid-template-columns:1fr} }
+
+/* ---------------- Section ---------------- */
+.section{padding:64px 0}
+.section-title{font-size:28px; margin:0 0 6px}
+.section-subtitle{color:var(--muted); margin:0 0 22px}
+
+/* ---------------- Cards ---------------- */
+.card-grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:20px}
+@media (max-width: 980px){ .card-grid{grid-template-columns: repeat(2, 1fr)} }
+@media (max-width: 660px){ .card-grid{grid-template-columns: 1fr} }
+.card{background:var(--card); border:1px solid #1b222c; border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column}
+.card-media img{aspect-ratio: 16/10; object-fit:cover}
+.card-body{padding:16px}
+.card-icon{width:38px; height:38px; display:grid; place-items:center; background:rgba(255,92,26,.12); border:1px solid rgba(255,92,26,.25); border-radius:12px; margin-bottom:8px}
+.card h3{margin:6px 0}
+.card p{color:var(--muted)}
+
+/* ---------------- About ---------------- */
+.about img{border-radius:var(--radius)}
+.about-copy p{color:var(--muted)}
+.checklist{display:grid; gap:8px; margin:12px 0 18px; padding:0}
+.checklist li{list-style:none; padding-left:28px; position:relative}
+.checklist li:before{content:'✔'; position:absolute; left:0; top:0; color:var(--brand-2)}
+
+/* ---------------- Highlights ---------------- */
+.highlights{padding:20px 0 40px}
+.highlight-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+@media (max-width: 820px){ .highlight-grid{grid-template-columns:repeat(2,1fr)} }
+@media (max-width: 520px){ .highlight-grid{grid-template-columns:1fr} }
+.highlight{background:linear-gradient(180deg,#131924,#0f141c); border:1px solid #1b222c; border-radius:16px; padding:16px}
+.highlight-k{font-size:26px; font-weight:800; color:#fff}
+.highlight-v{color:var(--muted)}
+
+/* ---------------- CTA ---------------- */
+.cta{padding:64px 0}
+.cta-inner{background:linear-gradient(135deg, rgba(255,92,26,.15), rgba(255,209,74,.10)); border:1px solid #2b323d; border-radius:22px; padding:28px; text-align:center}
+.cta h2{margin:0 0 6px}
+.cta p{color:var(--muted); margin:0 0 12px}
+
+/* ---------------- Contact ---------------- */
+.contact .contact-cards{display:grid; gap:12px; margin:16px 0}
+.contact-card{background:#0f141c; border:1px solid #1b222c; border-radius:14px; padding:14px}
+.contact-title{font-weight:700; margin-bottom:6px}
+
+.form{background:var(--card); border:1px solid #1b222c; border-radius:16px; padding:16px}
+.form label{display:grid; gap:6px; margin-bottom:12px}
+.form input,.form textarea{background:#0f141c; border:1px solid #232b36; color:var(--text); border-radius:12px; padding:10px 12px; outline:none; box-shadow:none}
+.form input:focus,.form textarea:focus{border-color:var(--brand); box-shadow:0 0 0 3px var(--ring)}
+.form-note{color:var(--muted); font-size:13px}
+.thankyou{background:var(--card); border:1px solid #1b222c; border-radius:16px; padding:18px}
+
+/* ---------------- Footer ---------------- */
+.site-footer{border-top:1px solid #171c23; margin-top:40px}
+.footer-inner{display:grid; gap:18px; padding:20px 0}
+.footer-brand{display:flex; align-items:center; gap:12px}
+.footer-links{display:flex; gap:14px}
+.muted{color:var(--muted)}
+
+/* ---------------- Contact icons ---------------- */
+.contact-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+.contact-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card);
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid #1b222c;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.contact-icon:hover {
+  background: #151a22;
+}
+
+/* ---------------- WhatsApp button ---------------- */
+.icon-btn{
+  display:inline-grid;
+  place-items:center;
+  width:56px; height:56px;
+  border-radius:50%;
+  border:1px solid #2b323d;
+  background:#0f141c;
+  transition:transform .12s, box-shadow .12s, background .12s;
+}
+.icon-btn--wa{
+  border-color: rgba(37,211,102,.35);
+  box-shadow: 0 0 0 0 rgba(37,211,102,.0);
+}
+.icon-btn--wa:hover{
+  background:#111922;
+  box-shadow: 0 0 0 4px rgba(37,211,102,.15);
+  transform: translateY(-1px);
+}
+.icon-btn svg{ width:28px; height:28px; display:block; }
